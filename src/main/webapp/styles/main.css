@@ -1,0 +1,43 @@
+body {
+    text-align: center;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: center;
+    border: 1px solid rgba(155, 150, 150, 0.7);
+    padding: 10px;
+}
+
+th {
+    background-color: #343a40;
+    color: white;
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #343a40;
+    border-color: #343a40;
+    color: white;
+}
+
+.pagination .page-item .page-link {
+    background-color: #fff;
+    border-color: #ddd;
+    color: #343a40;
+}

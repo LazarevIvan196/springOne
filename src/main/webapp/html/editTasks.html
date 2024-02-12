@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Task</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/darkly/bootstrap.min.css">
+    <link href="/style/main.css" rel="stylesheet">
+</head>
+<body>
+<div class="container my-3">
+    <h1>Edit Task</h1>
+    <hr>
+    <form th:action="@{/save}" th:object="${task}" method="post">
+        <input type="hidden" th:field="*{id}" />
+
+
+
+        <label>Description:</label>
+        <input type="text" th:field="*{description}" class="form-control mb-4 col-4" />
+
+        <label>Status:</label>
+        <select th:field="*{status}" class="form-control mb-4 col-4">
+            <option th:each="status : ${T(org.example.domain.Status).values()}" th:value="${status}" th:text="${status}"></option>
+        </select>
+
+        <button type="submit" class="btn btn-info col-2">Update Task</button>
+    </form>
+    <a th:href="@{/}" class="btn btn-primary mt-3">Back to Home</a>
+</div>
+</body>
+</html>

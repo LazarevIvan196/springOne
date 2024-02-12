@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/darkly/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+
+</head>
+<body>
+<div class="container">
+    <h1>Tasks: </h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id:</th>
+            <th>Description:</th>
+            <th>Status:</th>
+            <th>Action:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="task,number :${allTasks}">
+            <td th:text="${task.id}"/>
+            <td th:text="${task.description}" th:id="'desccription_' + ${task.id}"/>
+            <td th:text="${task.status}" th:id="'status_' + ${task.id}"/>
+            <td><a th:href="@{/edit-task/{id} (id=${task.id})}"
+                   class="btn btn-primary">Update</a>
+                <a th:href="@{/delete-task/{id}(id=${task.id}, page=${current_page})}"
+                   class="btn btn-primary">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="row mt-3">
+        <div class="col-md-4 mx-auto">
+            <a th:href="@{/add-task}" class="btn btn-primary btn-lg btn-block">Add New Task</a>
+        </div>
+    </div>
+    <nav aria-label="Page navigation" class="mt-4">
+        <ul class="pagination justify-content-center">
+            <li th:each="pageNumber : ${page_numbers}" class="page-item" th:classappend="${pageNumber == current_page? 'active' : ''}">
+                <a th:href="@{/(page=${pageNumber}, limit=10)}" class="page-link" th:text="${pageNumber}"></a>
+            </li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>
